@@ -1,0 +1,7 @@
+*.o
+*.bin
+*.swp
+*.swo
+tmp/*
+tmp/**/*
+log/*

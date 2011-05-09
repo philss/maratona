@@ -1,3 +1,6 @@
+/* Problem at: http://br.spoj.pl/problems/PARPROX/ 
+ * Author: Philip Sampaio
+ */
 #include <stdio.h>
 #include <math.h>
 #define EMPTY_LESSER -1.0
