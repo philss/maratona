@@ -9,7 +9,7 @@ int verify_games(int,int);
 
 int main() {
 	char player[2][5] = { "Aldo\0", "Beto\0" };
-	int player_points[3] = { 0, 0, 0 };
+	int player_points[2] = { 0, 0 };
 	int winner = 0;
 	int a = 0;
 	int b = 0;
@@ -32,14 +32,14 @@ int main() {
 		player_points[0] = 0;
 		player_points[1] = 0;
 		scanf("%d",&cases);
+
 	}
 	return 0;
 }
 
-int who_wins(int a, int b) {
-	/* if anyone wins, point goes to gaspar */
-	if ( a > b ) return 1;
-	if ( a == b ) return 2;
+int who_wins(int points_player_1, int points_player_2) {
+	/* Return 0 for player 1 and 1 for player 2 */
+	if ( points_player_2 > points_player_1 ) return 1;
 	return 0;
 }
 
