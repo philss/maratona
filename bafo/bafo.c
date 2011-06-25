@@ -6,6 +6,7 @@
 int who_wins(int,int);
 int verify_cases(int);
 int verify_games(int,int);
+int verify_winner(int,int);
 
 int main() {
 	char player[2][5] = { "Aldo\0", "Beto\0" };
@@ -23,8 +24,9 @@ int main() {
 		for(i=0; i < cases; i++) {
 			scanf("%d %d", &a, &b);
 			if ( ! verify_games(a,b) ) continue;
-			winner = who_wins(a,b);
-			player_points[winner]++;
+			winner = verify_winner(a,b);
+			if ( winner != 0 )
+				player_points[winner - 1]++;
 		}
 		j++;
 		winner = who_wins(player_points[0],player_points[1]);
@@ -37,10 +39,19 @@ int main() {
 	return 0;
 }
 
-int who_wins(int points_player_1, int points_player_2) {
+int who_wins(int a, int b) {
 	/* Return 0 for player 1 and 1 for player 2 */
-	if ( points_player_2 > points_player_1 ) return 1;
+	if ( b > a ) return 1;
 	return 0;
+}
+int verify_winner(int a, int b) {
+	/* Return 0 for player 1 and 1 for player 2 */
+	if ( a == b ) 
+		return 0; 
+	if ( a > b )
+		return 1;
+	else
+		return 2;	
 }
 
 int verify_cases(int cases) {
