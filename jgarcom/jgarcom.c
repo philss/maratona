@@ -1,5 +1,8 @@
 #include <stdio.h>
 
+/* Problem code: JGARCOM */
+
+
 int broken_cups(int,int);
 
 int main() {
