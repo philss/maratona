@@ -26,6 +26,7 @@ int main() {
 	scanf("%d",&total_votes);
 	if ( total_votes < 1 || total_votes > 100000 ) {
 		free(votes);	
+		free(tmp_vote);	
 		return 0;
 	}
 
@@ -45,7 +46,6 @@ int main() {
 				} else {
 					tmp_vote = insert(votes,j);
 				}
-
 				tmp_vote = NULL;
 			}
 		}
@@ -59,31 +59,30 @@ int main() {
 }
 struct t_node * insert(struct t_node* node, int info) 
 {
-    if ( node == NULL ) {
+	if ( node == NULL ) {
 		struct t_node * new_node = malloc(sizeof(struct t_node));
 		new_node->info = info; 
 		new_node->votes = 1; 
 		new_node->right = NULL; 
 		new_node->left = NULL;
 		return (struct t_node*)new_node;
-    }
-    else 
-    {
+	}
+	else 
+	{
 		if ( info <= node->info)
 			node->left = insert(node->left,info);
 		else
 			node->right = insert(node->right,info);
-		return (struct t_node*)node; 
-    }
-   
+	return (struct t_node*)node; 
+	}
 }
 
 struct t_node * search(struct t_node* node, int info) 
 {
-    if ( node == NULL ) 
+	if ( node == NULL ) 
 		return NULL; 
-    else 
-    {
+	else 
+	{
 		if ( node->info == info) 
 			return (struct t_node*)node; 
 		else
@@ -93,5 +92,5 @@ struct t_node * search(struct t_node* node, int info)
 			else 
 				return search(node->right,info);
 		}
-    }
+	}
 }
