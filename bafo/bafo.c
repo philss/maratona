@@ -3,7 +3,6 @@
 /* Problem code: BAFO */
 
 
-int who_wins(int,int);
 int verify_cases(int);
 int verify_games(int,int);
 int verify_winner(int,int);
@@ -25,11 +24,10 @@ int main() {
 			scanf("%d %d", &a, &b);
 			if ( ! verify_games(a,b) ) continue;
 			winner = verify_winner(a,b);
-			if ( winner != 0 )
-				player_points[winner - 1]++;
+			player_points[winner]++;
 		}
 		j++;
-		winner = who_wins(player_points[0],player_points[1]);
+		winner = verify_winner(player_points[0],player_points[1]);
 		printf("Teste %d\n%s\n\n",j,player[winner]);
 		player_points[0] = 0;
 		player_points[1] = 0;
@@ -39,19 +37,11 @@ int main() {
 	return 0;
 }
 
-int who_wins(int a, int b) {
-	/* Return 0 for player 1 and 1 for player 2 */
-	if ( b > a ) return 1;
-	return 0;
-}
 int verify_winner(int a, int b) {
 	/* Return 0 for player 1 and 1 for player 2 */
-	if ( a == b ) 
-		return 0; 
-	if ( a > b )
+	if ( b > a )
 		return 1;
-	else
-		return 2;	
+	return 0;
 }
 
 int verify_cases(int cases) {
