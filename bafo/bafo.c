@@ -30,29 +30,22 @@ int main() {
 		player_points[0] = 0;
 		player_points[1] = 0;
 		scanf("%d",&cases);
-
 	}
 	return 0;
 }
 
 int verify_winner(int a, int b) {
 	/* Return 0 for player 1 and 1 for player 2 */
-	if ( b > a )
-		return 1;
-	return 0;
+	return ( ( b > a ) ? 1 : 0 );
 }
 
 int winner_points(int a, int b) {
-	if ( verify_winner(a,b) == 0 ) 
-		return a - b;
-	return b - a;
+	return ( verify_winner(a,b) ? (b - a) : (a -b) );
 }
 
 int verify_cases(int cases) {
-	if ( cases < 1 ||	cases > 1000 ) return 0;
-	return 1;
+	return ( ( cases < 1 ||	cases > 1000 ) ? 0 : 1 );
 }
 int verify_games(int a, int b) {
-	if ( a < 0 || a > 100 || b < 0 || b > 100 ) return 0;
-	return 1;
+	return ( ( a < 0 || a > 100 || b < 0 || b > 100 ) ? 0 : 1 );
 }
