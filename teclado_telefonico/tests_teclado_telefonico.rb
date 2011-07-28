@@ -11,4 +11,11 @@ class TestTecladoTelefonico < Test::Unit::TestCase
   def test_formar_palavras_por_numeros
     assert_equal("DADA",TecladoTelefonico.new.para_palavras(3232))
   end
+  def test_formar_palavras_complexas_sem_letras_de_mesma_tecla_consecutiva
+    assert_equal("CIRCUNS",TecladoTelefonico.new.para_palavras(22244477722288667777))
+  end
+
+  def test_posicao_esta_no_final_do_range
+    assert_equal(true,TecladoTelefonico.new.posicao_passou_tamanho?(4,5))
+  end
 end
