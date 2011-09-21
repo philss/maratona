@@ -35,7 +35,7 @@ int solved_game(int s[9][9]) {
   int n_r = 0;
   int n_c = 0;
   reset_stretch(p);
-
+  
   for (i = 0; i < 9; i++) {
     if ( check_rows(s,p,i) )
       return 0;
@@ -59,7 +59,7 @@ int solved_game(int s[9][9]) {
       p[4][0] = s[n_r+1][n_c+1];
       p[5][0] = s[n_r+1][n_c+2];
       p[6][0] = s[n_r+2][n_c];
-      p[7][0] = s[n_c+2][n_c+1];
+      p[7][0] = s[n_r+2][n_c+1];
       p[8][0] = s[n_r+2][n_c+2];
 
       if ( check_block(p) )
@@ -106,12 +106,12 @@ int check_columns(int game[9][9],int stretch[9][2],int n_column) {
 }
 
 int check_block(int s[9][2]) {
-  int i = 0;
+  int i,j;
   for (i = 0; i < 9; i++) {
-    if ( s[i][1] ) 
-      return 1;
-    else
-      s[i][1] = 1;
+    for (j = i+1; j < 9; j++) {
+      if( s[i][0] == s[j][0] )
+        return 1;
+    }
   }
   return 0;
 }
