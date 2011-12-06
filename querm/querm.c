@@ -8,8 +8,7 @@ int main(int argc, const char *argv[])
     for(j=0; j < n; j++) {
       scanf("%d",&p);
       if ( p == j+1) {
-        printf("%d\n",p);
-        break;
+        printf("%d\n\n",p);
       }
       p = 0;
     }
